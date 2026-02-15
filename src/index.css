@@ -1,1 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com');
 @import "tailwindcss";
+@import "tailwindcss";
+@theme {
+  --font-kaushan: "Kaushan Script", cursive;
+}

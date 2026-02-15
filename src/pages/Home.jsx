@@ -1,10 +1,15 @@
 import NavBar from "../components/NavBar";
+import Hero from "../components/Hero";
+import Categories from "../components/Categories";
+import RecipeList from "../components/RecipeList";
 
 const Home = () => {
   return (
     <div>
       <NavBar />
-      <h1>Home Page</h1>
+      <Hero />
+      <Categories />
+      <RecipeList />
     </div>
   );
 };
