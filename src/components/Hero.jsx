@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar";
 
-const Hero = () => {
+const Hero = ({ searchTerm, setSearchTerm, fetchRecipes }) => {
   return (
     <section className="bg-orange-50 py-16 px-6 text-center">
       <h1 className="text-5xl font-medium text-green-700" style={{ fontFamily: 'var(--font-kaushan)' }}>
@@ -13,7 +13,11 @@ const Hero = () => {
       </p>
 
       <div className="mt-8">
-        <SearchBar />
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          fetchRecipes={fetchRecipes}
+        />
       </div>
     </section>
   );

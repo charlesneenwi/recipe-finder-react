@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 
-const SearchBar = () => {
+const SearchBar = ({ searchTerm, setSearchTerm, fetchRecipes }) => {
   return (
 
 <div className="max-w-xl mx-auto flex shadow-md rounded-lg overflow-hidden">
@@ -10,12 +10,16 @@ const SearchBar = () => {
       size={18}
     />
     <input
-      type="text"
+          type="text"
+          id="search"
+          name="recipe-search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
       placeholder="Search Recipe..."
       className="w-full pl-10 pr-3 py-2 text-gray-700 border border-gray-300 rounded-l-md shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
     />
   </div>
-  <button className="bg-green-700 text-white px-6">Search</button>
+  <button onClick={fetchRecipes} className="bg-green-700 text-white px-5">Search</button>
 </div>
       
   );
