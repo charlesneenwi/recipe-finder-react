@@ -5,10 +5,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-200 px-6 py-4">
+    <nav className="bg-green-700 px-6 py-4">
       <div className="flex justify-between items-center">
         
-        <h1 className="text-orange-600 font-bold text-xl">
+        <h1 className="text-white font-bold text-xl">
           RecipeRoot
         </h1>
 
@@ -16,18 +16,18 @@ const Navbar = () => {
           <Link to="/" className="text-orange-600">
             Home
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-orange-600">
+          <Link to="#" className="text-white hover:text-orange-600">
             Categories
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-orange-600">
+          <Link to="#" className="text-white hover:text-orange-600">
             Favourites
           </Link>
         </div>
 
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-2xl text-white"
           onClick={() => setIsOpen(!isOpen)}
-        >
+      >
           ☰
         </button>
       </div>

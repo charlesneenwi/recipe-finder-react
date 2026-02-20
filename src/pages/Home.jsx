@@ -30,8 +30,8 @@ const Home = () => {
         setSearchTerm={setSearchTerm}
         fetchRecipes={fetchRecipes}
       />
-      <Categories />
       <RecipeList recipes={recipes} />
+       <Categories />
     </div>
   );
 };
