@@ -1,39 +1,48 @@
 Recipe Finder App
-Project Overview:
+Project Overview
 
-The Recipe Finder App is a React-based web application that allows users to search for meals and view recipe results dynamically.
+The Recipe Finder App is a React-based web application that allows users to search for meals and view detailed recipe information dynamically using a public API.
+
+Users can search for a meal by name, view a list of recipe results, and navigate to a dedicated details page that displays ingredients, preparation instructions, video tutorials, and external source links where available.
+
+This project was built during the ALX Frontend Capstone phase to demonstrate practical understanding of React fundamentals, API integration, routing, and responsive design.
 
 Technologies Used
 
-React (with Vite)
-
+React (Vite)
 JavaScript (ES6+)
+React Router DOM
+Tailwind CSS
+TheMealDB API
 
-CSS
+Features Implemented
 
-TheMealDB API (for fetching recipes)
+The application allows users to search for meals by name. Data is fetched dynamically from TheMealDB API and displayed in a structured format.
 
-FEATURES:
+Recipe cards display the meal image, name, category, and cuisine. Clicking on a recipe navigates to a detailed view page.
 
-Manual search-based API fetch
+The recipe details page displays the full list of ingredients with measurements, cooking instructions, an embedded YouTube tutorial when available, and a source link if provided by the API.
 
-Display recipe cards dynamically
+The application includes loading state handling while data is being fetched and user-friendly error handling in case of failed API requests.
 
-Handle loading state
+The layout is responsive and adapts to mobile, tablet, and desktop screen sizes.
 
-Handle error state
+Project Structure
 
-Improve UI styling
+src/
+components/
+pages/
+App.jsx
+main.jsx
 
-Add responsive design improvements
+Development Process
 
-DEVELOPMENT PROCESS:
-This project is being developed incrementally with daily commits to demonstrate:
+The project is being developed incrementally with structured commits to demonstrate progressive feature implementation, debugging and problem-solving, API integration, routing implementation, state management, and proper version control practices.
 
-Progressive development
+Future Improvements
 
-Debugging process
+Future enhancements may include implementing a favorites feature using localStorage, adding category-based filtering, improving UI consistency and spacing, and refining user feedback for empty search results.
 
-Feature evolution
+Author
 
-Proper version control discipline
+Developed as part of the ALX Frontend Engineering Capstone phase.
