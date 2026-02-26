@@ -1,19 +1,20 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 const RecipeDetails = () => {
   const navigate = useNavigate();
-
   const { id } = useParams();
-  const [recipe, setRecipe] = useState(null);
 
+  const [recipe, setRecipe] = useState(null);
+  const [isFavourite, setIsFavourite] = useState(false);
+
+  // Fetch recipe
   useEffect(() => {
     const fetchRecipeDetails = async () => {
       try {
         const response = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
         );
 
         const data = await response.json();
@@ -26,6 +27,38 @@ const RecipeDetails = () => {
     fetchRecipeDetails();
   }, [id]);
 
+  // Check if already in favourites
+  useEffect(() => {
+    if (!recipe) return;
+
+    const storedFavourites = localStorage.getItem("favourites");
+    const favourites = storedFavourites ? JSON.parse(storedFavourites) : [];
+
+    const exists = favourites.find(
+      (item) => item.idMeal === recipe.idMeal
+    );
+
+    setIsFavourite(!!exists);
+  }, [recipe]);
+
+  // Add / Remove favourites
+  const handleFavourite = () => {
+    const storedFavourites = localStorage.getItem("favourites");
+    let favourites = storedFavourites ? JSON.parse(storedFavourites) : [];
+
+    if (isFavourite) {
+      favourites = favourites.filter(
+        (item) => item.idMeal !== recipe.idMeal
+      );
+      setIsFavourite(false);
+    } else {
+      favourites.push(recipe);
+      setIsFavourite(true);
+    }
+
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  };
+
   if (!recipe) {
     return (
       <div className="text-center py-10">
@@ -35,24 +68,6 @@ const RecipeDetails = () => {
       </div>
     );
   }
-
-  const handleFavourite = () => {
-    const storedFavourites = localStorage.getItem("favourites");
-
-    let favourites = storedFavourites ? JSON.parse(storedFavourites) : [];
-
-    const alreadyExists = favourites.find(
-      (item) => item.idMeal === recipe.idMeal,
-    );
-
-    if (!alreadyExists) {
-      favourites.push(recipe);
-      localStorage.setItem("favourites", JSON.stringify(favourites));
-      alert("Added to favourites!");
-    } else {
-      alert("Recipe already in favourites.");
-    }
-  };
 
   return (
     <div className="max-w-5xl mx-auto p-6">
@@ -65,14 +80,12 @@ const RecipeDetails = () => {
         ← Back
       </button>
 
-      {/* Image */}
       <img
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
         className="w-md rounded-xl mb-6"
       />
 
-      {/* Title */}
       <h1 className="text-3xl font-bold mb-4">{recipe.strMeal}</h1>
 
       <p className="text-gray-600 mb-6">
@@ -81,13 +94,16 @@ const RecipeDetails = () => {
 
       <button
         onClick={handleFavourite}
-        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+        className={`mt-4 px-4 py-2 text-white rounded transition ${
+          isFavourite
+            ? "bg-gray-600 hover:bg-gray-700"
+            : "bg-red-500 hover:bg-red-600"
+        }`}
       >
-        Add to Favourites
+        {isFavourite ? "Remove from Favourites" : "Add to Favourites"}
       </button>
 
-      {/* Ingredients */}
-      <h2 className="text-2xl font-semibold mb-3">Ingredients</h2>
+      <h2 className="text-2xl font-semibold mb-3 mt-6">Ingredients</h2>
       <ul className="list-disc list-inside mb-6">
         {Array.from({ length: 20 }, (_, i) => {
           const ingredient = recipe[`strIngredient${i + 1}`];
@@ -100,18 +116,15 @@ const RecipeDetails = () => {
               </li>
             );
           }
-
           return null;
         })}
       </ul>
 
-      {/* Instructions */}
       <h2 className="text-2xl font-semibold mb-3">Instructions</h2>
       <p className="text-gray-700 whitespace-pre-line mb-6">
         {recipe.strInstructions}
       </p>
 
-      {/* YouTube Video */}
       {recipe.strYoutube && (
         <div className="mb-6">
           <h2 className="text-2xl font-semibold mb-3">Video Tutorial</h2>
@@ -126,7 +139,6 @@ const RecipeDetails = () => {
         </div>
       )}
 
-      {/* Source Link */}
       {recipe.strSource && (
         <a
           href={recipe.strSource}
