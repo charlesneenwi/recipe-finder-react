@@ -1,28 +1,47 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "../components/RecipeCard";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/NavBar";
 
 function Favourites() {
   const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     const storedFavourites = localStorage.getItem("favourites");
-    const parsedFavourites = storedFavourites ? JSON.parse(storedFavourites) : [];
-    setFavourites(parsedFavourites);
+    const parsed = storedFavourites ? JSON.parse(storedFavourites) : [];
+    setFavourites(parsed);
   }, []);
 
-    return (
-        <div className="max-w-5xl mx-auto p-6">
-        <NavBar />
-      
-      <h1 className="text-2xl mb-6 mt-4  text-orange-500 text-center text-4xl font-medium" style={{ fontFamily: 'var(--font-kaushan)' }}>Your Favorite Recipes</h1>
+  const removeFavourite = (id) => {
+    const updated = favourites.filter(
+      (meal) => meal.idMeal !== id
+    );
+
+    setFavourites(updated);
+    localStorage.setItem("favourites", JSON.stringify(updated));
+  };
+
+  return (
+      <div className="container mx-auto px-4 py-8">
+          <Navbar />
+      <h1 className="text-2xl font-bold mb-6">
+        Your Favourites
+      </h1>
 
       {favourites.length === 0 ? (
-        <p>No favorites added yet.</p>
+        <p>No favourites added yet.</p>
       ) : (
         <div className="grid md:grid-cols-3 gap-6">
-          {favourites.map((recipe) => (
-            <RecipeCard key={recipe.idMeal} recipe={recipe} />
+          {favourites.map((meal) => (
+            <div key={meal.idMeal} className="relative">
+              <RecipeCard recipe={meal} />
+
+              <button
+                onClick={() => removeFavourite(meal.idMeal)}
+                className="absolute top-2 right-2 bg-black text-white px-2 py-1 text-sm rounded"
+              >
+                Remove
+              </button>
+            </div>
           ))}
         </div>
       )}

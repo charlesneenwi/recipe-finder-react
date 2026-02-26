@@ -57,6 +57,7 @@ const RecipeDetails = () => {
     }
 
     localStorage.setItem("favourites", JSON.stringify(favourites));
+    window.dispatchEvent(new Event("storage"));
   };
 
   if (!recipe) {

@@ -1,8 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const updateCount = () => {
+      const stored = localStorage.getItem("favourites");
+      const parsed = stored ? JSON.parse(stored) : [];
+      setCount(parsed.length);
+    }
+
+    updateCount();
+    window.addEventListener("storage", updateCount);
+
+    return () => {
+      window.removeEventListener("storage", updateCount);
+    };
+  }, []);
 
   return (
     <nav className="bg-green-700 px-6 py-4">
@@ -21,6 +37,11 @@ const Navbar = () => {
           </Link>
           <Link to="/favourites" className="text-white hover:text-orange-600">
             Favourites
+            {count > 0 && (
+              <span className="ml-1 bg-red-500 text-white text-xs rounded-full px-2">
+                {count}
+              </span>
+            )}
           </Link>
         </div>
 
