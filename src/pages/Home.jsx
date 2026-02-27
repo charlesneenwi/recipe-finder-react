@@ -1,8 +1,8 @@
 import { useState } from "react";
-import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import Categories from "../components/Categories";
 import RecipeList from "../components/RecipeList";
+
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -24,14 +24,13 @@ const Home = () => {
   
   return (
     <div>
-      <NavBar />
       <Hero
       searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         fetchRecipes={fetchRecipes}
       />
       <RecipeList recipes={recipes} />
-       <Categories />
+      <Categories />
     </div>
   );
 };

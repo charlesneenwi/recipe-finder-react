@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "../components/RecipeCard";
-import Navbar from "../components/NavBar";
 
 function Favourites() {
   const [favourites, setFavourites] = useState([]);
@@ -21,8 +20,8 @@ function Favourites() {
   };
 
   return (
+    <>
       <div className="container mx-auto px-4 py-8">
-          <Navbar />
       <h1 className="text-2xl font-bold mb-6">
         Your Favourites
       </h1>
@@ -45,7 +44,8 @@ function Favourites() {
           ))}
         </div>
       )}
-    </div>
+      </div>
+      </>
   );
 }
 
