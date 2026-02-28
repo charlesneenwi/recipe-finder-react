@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "./NavBar";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -17,10 +16,10 @@ const Categories = () => {
   ];
 
   return (
-    <>
+    <div className="bg-orange-50">
       
-    <section className="py-16 px-6 text-center">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+    <section className="py-16 px-6 text-center  border-t border-gray-300 border-b border-gray-300">
+      <h2 className="text-2xl md:text-4xl font-bold text-green-800" style={{ fontFamily: 'var(--font-kaushan)' }}>
         Top Categories
       </h2>
 
@@ -40,7 +39,7 @@ const Categories = () => {
         ))}
       </div>
       </section>
-      </>
+      </div>
   );
 };
 

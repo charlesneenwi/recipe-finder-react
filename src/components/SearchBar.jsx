@@ -16,7 +16,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, fetchRecipes }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
       placeholder="Search Recipe..."
-      className="w-full pl-10 pr-3 py-2 text-gray-700 border border-gray-300 rounded-l-md shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+      className="w-full pl-10 pr-3 py-2 text-gray-700 border border-gray-400 rounded-l-md shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
     />
   </div>
   <button onClick={fetchRecipes} className="bg-green-700 text-white px-5">Search</button>

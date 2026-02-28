@@ -6,8 +6,18 @@ import CategoryPage from "./pages/CategoryPage";
 import Footer from "./components/Footer";
 import Categories from "./components/Categories";
 import NavBar from "./components/NavBar";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   return (
     <div className="flex flex-col min-h-screen">
 

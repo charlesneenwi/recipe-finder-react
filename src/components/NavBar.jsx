@@ -24,7 +24,7 @@ const Navbar = () => {
     <nav className="bg-green-700 px-6 py-4">
       <div className="flex justify-between items-center">
         
-        <h1 className="text-white font-bold text-xl">
+        <h1 className="text-white font-bold text-3xl" style={{ fontFamily: 'var(--font-kaushan)' }}>
           RecipeRoot
         </h1>
 

@@ -10,7 +10,7 @@ const Footer = () => {
           <h2 className="text-xl font-bold text-white">
             Recipe Finder
           </h2>
-          <p className="mt-3 text-sm text-gray-400">
+          <p className="mt-3 text-sm text-gray-300">
             Discover delicious meals, explore categories, and save your
             favourite recipes all in one place.
           </p>
@@ -45,7 +45,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-white">
             Built With
           </h3>
-          <p className="mt-3 text-sm text-gray-400">
+          <p className="mt-3 text-sm text-gray-300">
             React, Tailwind CSS, React Router and TheMealDB API.
           </p>
         </div>

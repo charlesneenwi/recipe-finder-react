@@ -62,7 +62,7 @@ const RecipeDetails = () => {
 
   if (!recipe) {
     return (
-      <div className="text-center py-10">
+      <div className="text-center py-10 bg-orange-50">
         <h2 className="text-xl font-semibold text-gray-700">
           Loading recipe details...
         </h2>
@@ -71,8 +71,7 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      <NavBar />
+    <div className="max-w-5xl mx-auto p-6 bg-orange-50">
 
       <button
         onClick={() => navigate(-1)}

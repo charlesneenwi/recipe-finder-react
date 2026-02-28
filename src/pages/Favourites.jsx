@@ -21,8 +21,8 @@ function Favourites() {
 
   return (
     <>
-      <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">
+      <div className="container mx-auto px-4 py-8  text-center bg-orange-50">
+      <h1 className="text-4xl font-bold mb-7 text-green-800" style={{ fontFamily: 'var(--font-kaushan)' }}>
         Your Favourites
       </h1>
 

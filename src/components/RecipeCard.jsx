@@ -4,12 +4,15 @@ const RecipeCard = ({ recipe }) => {
   return (
     <Link
       to={`/recipe/${recipe.idMeal}`}
-      className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition block"
+      className="bg-white rounded-xl shadow-md overflow-hidden 
+transition-all duration-300 ease-in-out transform 
+hover:scale-105 hover:-translate-y-1 hover:shadow-2xl block"
     >
       <img
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
-        className="w-full h-48 object-cover"
+        
+        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
       />
 
       <div className="p-4 text-left">
